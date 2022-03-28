@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call([UsersRolesTableSeeder::class]);
         $this->call([PostTableSeeder::class]);
         $this->call([CategoriesTableSeeder::class]);
+        $this->call([RepliesTableSeeder::class]);
+        $this->call([TagsTableSeeder::class]);
         /*$this->call([PostsCategoriesTableSeeder::class]);*/
     }
 }
