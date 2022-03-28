@@ -48,6 +48,7 @@ Route::group(['prefix'=>'admin', 'middleware' => 'admin'], function(){
     Route::get('categories/restore/{category}', 'App\Http\Controllers\AdminCategoriesController@restore')->name('categories.restore');
     Route::resource('comments',App\Http\Controllers\AdminPostCommentsController::class);
     Route::resource('replies',App\Http\Controllers\AdminPostCommentsRepliesController::class);
+    Route::resource('tags',App\Http\Controllers\AdminPostsTagsController::class);
 });
 
 // 2 soorten middleware via Route::group(['prefix'=> 'admin', 'middleware' => ['auth', 'admin'], function(){})

@@ -182,6 +182,20 @@
                 </div>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages7"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-blog"></i>
+                <span>Tags</span>
+            </a>
+            <div id="collapsePages7" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Comments:</h6>
+                    <a class="collapse-item" href="{{route('tags.index')}}">All Tags</a>
+                    <a class="collapse-item" href="{{route('tags.create')}}">Create Tag</a>
+                </div>
+            </div>
+        </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Tag;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Session;
 
 
 class AdminPostsTagsController extends Controller
@@ -28,6 +30,8 @@ class AdminPostsTagsController extends Controller
     public function create()
     {
         //
+        $tags = Tag::whereNull('parent_id')->with('childtags')->get();
+        return view('admin.tags.create', compact('tags'));
     }
 
     /**
@@ -39,6 +43,15 @@ class AdminPostsTagsController extends Controller
     public function store(Request $request)
     {
         //
+        $tag = new Tag();
+        $tag->name = $request->name;
+        if($request->parent_id){
+            $tag->parent_id = $request->parent_id;
+        }else{
+            $tag->parent_id = NULL;
+        }
+        $tag->save();
+        return redirect()->back();
     }
 
     /**
@@ -61,6 +74,8 @@ class AdminPostsTagsController extends Controller
     public function edit($id)
     {
         //
+        $tag = Tag::findOrFail($id);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -73,6 +88,10 @@ class AdminPostsTagsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tag = Tag::findOrFail($id);
+        $tag->name = $request->name;
+        $tag->update();
+        return redirect()->route('tags.index');
     }
 
     /**
@@ -84,5 +103,12 @@ class AdminPostsTagsController extends Controller
     public function destroy($id)
     {
         //
+        $tag = Tag::findOrFail($id);
+
+        session::flash('user_message', $tag->name . ' was deleted!');
+
+        $tag->delete();
+
+        return redirect()->back();
     }
 }
