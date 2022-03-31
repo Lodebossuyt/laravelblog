@@ -5,6 +5,10 @@
         @if(Session::has('user_message'))
             <p class="ml-5 alert alert-info">{{session('user_message')}}</p>
         @endif
+        <a class="btn btn-primary" href="{{route('products.index')}}">All</a>
+        @foreach($brands as $brand)
+            <a class="btn btn-primary" href="{{route('admin.productsPerBrand', $brand->id)}}">{{$brand->name}}</a>
+        @endforeach
         <table class="table table-striped">
             <thead>
             <tr>

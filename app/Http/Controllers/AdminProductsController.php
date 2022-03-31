@@ -21,8 +21,9 @@ class AdminProductsController extends Controller
     public function index()
     {
         //
-        $products = Product::paginate(15);
-        return view('admin.products.index', compact('products'));
+        $products = Product::with(['brand','photo','keywords', 'productcategory'])->paginate(15);
+        $brands = Brand::all();
+        return view('admin.products.index', compact('products', 'brands'));
     }
 
     /**
@@ -132,5 +133,10 @@ class AdminProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function productsPerBrand($id){
+        $brands = Brand::all();
+        $products = Product::with(['brand','photo','keywords', 'productcategory'])->where('brand_id', $id)->paginate(10);
+        return view('admin.products.index', compact('brands', 'products'));
     }
 }
