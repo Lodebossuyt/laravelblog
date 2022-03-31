@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Category;
+use App\Models\Keyword;
 use App\Models\Photo;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class AdminPostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $keywords = Keyword::all();
+        return view('admin.posts.create', compact('categories','keywords'));
     }
 
     /**
@@ -74,10 +76,19 @@ class AdminPostController extends Controller
         $post->save();
 
         $post->categories()->sync($request->categories, false);
+        //$post->keywords()->sync($request->keywords, false);
 
         session::flash('user_message', $post->title . ' was created!');
 
+        foreach($request->keywords as $keyword){
+            $keywordfind = Keyword::findOrFail($keyword);
+            // onderstaande lijn zorgt ervoor dat we via het model van Post de methode keywords gebruiken, de methode keywords bevat morphtomany, morphtomany zorgt ervoor dat je kan wegschrijven in de ables tabel.
+            $post->keywords()->save($keywordfind);
+        }
+
         return redirect()->route('posts.index');
+
+
     }
 
     /**

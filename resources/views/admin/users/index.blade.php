@@ -34,7 +34,7 @@
             <tr>
                 <td>{{$user->id}}</td>
                 <td>
-                    <img height="62" src="{{$user->photo ? asset($user->photo->file): 'https://via.placeholder.com/150'}}" alt="{{$user->name}}">
+                    <img height="62" src="{{$user->photo ? asset('img/users/' . $user->photo->file): 'https://via.placeholder.com/150'}}" alt="{{$user->name}}">
                 </td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>

@@ -21,6 +21,14 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="keywords">Keywords (CTRL + CLICK multiple select)</label>
+                    <select class="form-control custom-select-lg" name="keywords[]" id="keywords" multiple>
+                        @foreach($keywords as $keyword)
+                            <option value="{{$keyword->id}}">{{$keyword->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <input type="file" name="photo_id" id="ChooseFile">
                 </div>
                 <button type="submit" class="btn btn-primary">Add Post <i class="fa fa-angle-right ml-2"></i></button>

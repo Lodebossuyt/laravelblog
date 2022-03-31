@@ -83,7 +83,7 @@ class AdminUsersController extends Controller
                 ->resize(200,200, function($constraint){
                     $constraint->aspectRatio();
                 })->crop(200,200)
-                ->save(public_path('/img/' . $name));
+                ->save(public_path('/img/users/' . $name));
             /*$file->move('img', $name);*/
             $photo = Photo::create(['file'=>$name]);
             $user->photo_id = $photo->id;
@@ -140,7 +140,7 @@ class AdminUsersController extends Controller
         /*Photo overschrijven*/
         if($file = $request->file('photo_id')){
             $name = time() . $file->getClientOriginalName();
-            $file->move('img', $name);
+            $file->move('img/users/', $name);
             $photo = Photo::create(['file'=>$name]);
             $user->photo_id = $input['photo_id'] = $photo->id ;
         }

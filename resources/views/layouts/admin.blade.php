@@ -196,6 +196,40 @@
                 </div>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages8"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-blog"></i>
+                <span>Products</span>
+            </a>
+            <div id="collapsePages8" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Products:</h6>
+                    <a class="collapse-item" href="{{route('products.index')}}">All Products</a>
+                    <a class="collapse-item" href="{{route('products.create')}}">Create Product</a>
+                </div>
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">ProductsCategories:</h6>
+                    <a class="collapse-item" href="{{route('productcategories.index')}}">All product categories</a>
+                    <a class="collapse-item" href="{{route('productcategories.create')}}">Create product category</a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages9"
+               aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-blog"></i>
+                <span>Brands</span>
+            </a>
+            <div id="collapsePages9" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Brands:</h6>
+                    <a class="collapse-item" href="{{route('brands.index')}}">All Brands</a>
+                    <a class="collapse-item" href="{{route('brands.create')}}">Create Brands</a>
+                </div>
+            </div>
+        </li>
+
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">

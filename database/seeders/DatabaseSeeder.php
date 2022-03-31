@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call([CategoriesTableSeeder::class]);
         $this->call([RepliesTableSeeder::class]);
         $this->call([TagsTableSeeder::class]);
+        $this->call([KeywordsTableSeeder::class]);
+        $this->call([BrandTableSeeder::class]);
+        $this->call([ProductCategoryTableSeeder::class]);
         /*$this->call([PostsCategoriesTableSeeder::class]);*/
     }
 }

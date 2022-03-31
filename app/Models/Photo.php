@@ -20,7 +20,7 @@ class Photo extends Model
     //attribute functie werkt alleen als File bestaat en dit bestaat via $guarded, of via $fillable
     //get{property}Attribute
     //als je file aanspreekt wordt getFileAttribute gebruikt en retourneert hij eigelijk iest anders!! , SUPER HANDIG
-    public function getFileAttribute($photo){
+   /* public function getFileAttribute($photo){
         return $this->uploads . $photo;
-    }
+    }*/
 }

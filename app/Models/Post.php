@@ -24,6 +24,9 @@ class Post extends Model
     public function postcomments(){
         return $this->hasMany(Comment::class);
     }
+    public function keywords(){
+        return $this->morphToMany(Keyword::class, 'keywordable');
+    }
     /**Search functie op de index**/
     /**samengetrokken functie van scope en eigen gekozen filter functie**/
     public function scopeFilter($query, array $filters){
